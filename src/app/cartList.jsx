@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Counter from "./counter";
 
-export default function CartList() {
+export default function CartList({ onTotalChange }) {
 //   const [products, setProducts] = useState([]);
 
 //   useEffect(() => {
@@ -27,21 +27,29 @@ export default function CartList() {
     console.log(products);
 
 //masukin quantity
-const [quantities, setQuantities] = useState({});
-const initialQty ={};
-products.forEach(product => {
-  initialQty[product.id] = 0;
-});
-useEffect(() => {
-  setQuantities(initialQty);
-}, [products]);
+    const [quantities, setQuantities] = useState({});
+    
+    const initialQty ={};
+    products.forEach(product => {
+        initialQty[product.id] = 0;
+    });
 
-const updateQuantity = (productId, newQty) => {
-  setQuantities(prev => ({
-    ...prev,
-    [productId]: newQty
-  }));
-};
+    useEffect(() => {
+        setQuantities(initialQty);
+    }, [products]);
+
+    const updateQuantity = (productId, newQty) => {
+        setQuantities(prev => ({...prev, [productId]: newQty
+    }));
+    };
+
+    const totalItems = Object.values(quantities).reduce((a, b) => a + b, 0);
+  
+    useEffect(() => {
+        if (typeof onTotalChange === "function") {
+            onTotalChange(totalItems);
+        }
+    }, [totalItems, onTotalChange]);
 
 
   return (
@@ -53,7 +61,7 @@ const updateQuantity = (productId, newQty) => {
         <div key={product.id} className="border p-4 rounded shadow-sm">
           <img src={product.image} alt={product.title} className="h-32 object-contain mb-2" />
           <h3 className="font-bold text-md">{product.title}</h3>
-          <p className="text-sm text-gray-600">${product.price}</p>
+          <p className="text-sm text-gray-600">$ {product.price}</p>
           <Counter quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)} />
         </div>
         ))
