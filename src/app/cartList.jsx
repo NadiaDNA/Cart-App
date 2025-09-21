@@ -64,7 +64,7 @@ export default function CartList({ onTotalChange }) {
         <div key={product.id} className="border p-4 rounded shadow-sm">
             <CartItem
             product={product} quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)}/>
-            <Counter quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)} />
+            {/* <Counter quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)} /> */}
         </div>
         ))
         )}
