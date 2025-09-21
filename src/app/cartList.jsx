@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Counter from "./counter";
+import CartItem from "./cartItem";
 
 export default function CartList({ onTotalChange }) {
 //   const [products, setProducts] = useState([]);
@@ -28,13 +29,12 @@ export default function CartList({ onTotalChange }) {
 
 //masukin quantity
     const [quantities, setQuantities] = useState({});
-    
-    const initialQty ={};
-    products.forEach(product => {
-        initialQty[product.id] = 0;
-    });
 
     useEffect(() => {
+        const initialQty = {};
+        products.forEach(product => {
+            initialQty[product.id] = 0;
+        });
         setQuantities(initialQty);
     }, [products]);
 
@@ -51,6 +51,9 @@ export default function CartList({ onTotalChange }) {
         }
     }, [totalItems, onTotalChange]);
 
+    console.log("Current quantities:", quantities);
+    console.log("Total items:", totalItems);
+
 
   return (
     <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -59,10 +62,9 @@ export default function CartList({ onTotalChange }) {
             ) : (
       products.map(product => (
         <div key={product.id} className="border p-4 rounded shadow-sm">
-          <img src={product.image} alt={product.title} className="h-32 object-contain mb-2" />
-          <h3 className="font-bold text-md">{product.title}</h3>
-          <p className="text-sm text-gray-600">$ {product.price}</p>
-          <Counter quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)} />
+            <CartItem
+            product={product} quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)}/>
+            <Counter quantity={quantities[product.id] || 0} onChange={(newQty) => updateQuantity(product.id, newQty)} />
         </div>
         ))
         )}
