@@ -14,10 +14,10 @@ export default function Counter({ quantity = 0, onChange }) {
     }
 
     return (
-        <div className="flex items-center gap-2 mt-2">
-            <Button onClick={decrement} size='sm' variant="outline" disabled={!onChange || quantity <= 0}>-</Button>
+        <div className="flex items-center gap-2">
+            <Button onClick={decrement} size='sm' variant="outline" className="border-[#701a42] text-[#701a42] hover:bg-[#701a42]/10" disabled={!onChange || quantity <= 0}>-</Button>
             <span>{quantity}</span>
-            <Button onClick={increment} size='sm' variant="outline" disabled={!onChange}>+</Button>
+            <Button onClick={increment} size='sm' variant="outline" className="border-[#701a42] text-[#701a42] hover:bg-[#701a42]/10" disabled={!onChange}>+</Button>
         </div>
     );
 }

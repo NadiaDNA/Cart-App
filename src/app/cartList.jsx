@@ -56,7 +56,7 @@ export default function CartList({ onTotalChange }) {
 
 
   return (
-    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="p-4 grid grid-cols-1 gap-4">
       {products.length === 0 ? (
                 <span>Loading...</span>
             ) : (
