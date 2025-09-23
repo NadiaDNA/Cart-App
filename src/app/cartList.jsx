@@ -5,6 +5,8 @@ import Counter from "./counter";
 import CartItem from "./cartItem";
 
 export default function CartList({ onTotalChange }) {
+
+
 //   const [products, setProducts] = useState([]);
 
 //   useEffect(() => {
@@ -12,6 +14,9 @@ export default function CartList({ onTotalChange }) {
 //       .then(res => setProducts(res.data))
 //       .catch(err => console.error(err));
 //   }, []);
+
+
+
 
 //ambil data api pake axios
  const [products, setProducts] = useState([]);
