@@ -45,10 +45,10 @@ export default function CartItem({ product }) {
                     </div>
                 </div>
         </div>
-        <div className="grid grid-cols-3 gap-8 w-full sm:w-auto text-center sm:text-left ">
-            <h3 className="text-base text-gray-600">${product.price}</h3>
+        <div className="grid grid-cols-3 gap-10 w-full sm:w-auto text-center sm:text-left ">
+            <div className="text-base w-1/4 text-left text-gray-600">${product.price}</div>
             <Counter productId={product.id} />
-            <h3 className="font-bold text-[#701A42]">${subTotal}</h3>
+            <h3 className="font-bold w-1/4 text-right text-[#701A42]">${subTotal}</h3>
         </div>
     </div>
 

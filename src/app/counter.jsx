@@ -45,10 +45,10 @@ export default function Counter({ productId }) {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <Button onClick={decrement} size='sm' variant="outline" className="border-[#701a42] bg-pink-100 text-[#701a42] hover:bg-[#701a42]/20" disabled={quantity <= 0}>-</Button>
-      <span>{quantity}</span>
-      <Button onClick={increment} size='sm' variant="outline" className="border-[#701a42] bg-pink-100 text-[#701a42] hover:bg-[#701a42]/20">+</Button>
+    <div className="flex items-center space-x-2 w-1/4 justify-center">
+      <Button onClick={decrement} size='sm' variant="outline" className="px-2 border-[#701a42] bg-pink-100 text-[#701a42] hover:bg-[#701a42]/20" disabled={quantity <= 0}>-</Button>
+      <span className="w-8 text-center">{quantity}</span>
+      <Button onClick={increment} size='sm' variant="outline" className="px-2 border-[#701a42] bg-pink-100 text-[#701a42] hover:bg-[#701a42]/20">+</Button>
     </div>
   );
 }

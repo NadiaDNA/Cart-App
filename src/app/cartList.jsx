@@ -81,6 +81,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CartItem from "./cartItem";
 import { useCartStore } from "./store/cartStore";
+import TotalPrice from './totalPrice';
 
 export default function CartList() {
   const [products, setProducts] = useState([]);
@@ -88,7 +89,7 @@ export default function CartList() {
   const updateTotal = useCartStore((state) => state.updateTotal);
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products?limit=5")
+    axios.get("https://fakestoreapi.com/products?limit=10")
       .then(res => {
         setProducts(res.data);
         const initialQty = {};
@@ -113,6 +114,10 @@ export default function CartList() {
           <CartItem key={product.id} product={product} />
         ))
       )}
+      {/* <div className="bottom-0 left-0 w-full"> */}
+      <div className="mt-20">
+      <TotalPrice products={products} />
+      </div>
     </div>
   );
 }
