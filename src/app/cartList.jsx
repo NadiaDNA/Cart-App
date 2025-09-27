@@ -100,7 +100,8 @@ export default function CartList() {
           setQuantity(Number(id), qty);
         });
         updateTotal();
-      });
+      })
+      .catch(err => console.error(err));
   }, []);
 
         

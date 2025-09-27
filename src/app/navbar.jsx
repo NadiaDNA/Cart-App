@@ -16,6 +16,7 @@
 //     );
 // }
 
+
 import { useCartStore } from './store/cartStore';
 import { Badge } from "@/components/ui/badge";
 import { Handbag } from 'lucide-react';
